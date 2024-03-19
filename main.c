@@ -21,7 +21,7 @@ int main(){
         break;
       case 2:
         printf("\nDeletar Tarefa\n");
-        break
+        break;
       case 3:
         printf("\nListar Tarefas\n");
         break;
