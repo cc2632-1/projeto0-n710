@@ -3,8 +3,12 @@
 // git fetch origin
 // git checkout 1-menu-principal
 #include <stdio.h>
+#include "tarefas.h"
 
 int main (){
+  int pos = 0;
+  Tarefa tarefas[TOTAL];
+  
   int opcao;
   do{
   printf("======================\n");
