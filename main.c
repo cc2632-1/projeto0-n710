@@ -14,6 +14,19 @@ int main() {
     printf("0 - Sair\n");
     printf("Entre com uma opcao: ");
     int i = scanf("%d", &opcao);
+
     printf("Opcao escolhida: %d\n", opcao);
+    if (opcao == 1) {
+      int erro = criar(tarefas, &pos);
+    } else if (opcao == 2) {
+      int erro = deletar(tarefas, &pos);
+    } else if (opcao == 3) {
+      int erro = listar(tarefas, pos);
+    } else if (opcao == 0) {
+      printf("Sair\n");
+    } else {
+      printf("opcao invalida");
+    }
+
   } while (opcao != 0);
 }
