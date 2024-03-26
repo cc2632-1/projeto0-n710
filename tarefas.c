@@ -19,6 +19,7 @@ int criar(Tarefa tarefas[], int *pos) {
 
   return 0;
 }
+
 int deletar(Tarefa tarefas[], int *pos) {
   if (*pos == 0)
     return 1;
@@ -40,6 +41,7 @@ int deletar(Tarefa tarefas[], int *pos) {
 
   return 0;
 }
+
 int listar(Tarefa tarefas[], int pos) {
   if (pos == 0)
     return 1;
@@ -53,12 +55,44 @@ int listar(Tarefa tarefas[], int pos) {
 
   return 0;
 }
+
 int salvar(Tarefa tarefas[], int total, int pos) {
-  printf("funcao de salvar tarefas\n");
+  FILE *f = fopen("tarefas", "wb");
+  if(f == NULL)
+    return 1;
+
+  int e = fwrite(tarefas, total, sizeof(Tarefa), f);
+  if(e <= 0)
+    return 2;
+
+  e = fwrite(&pos, 1, sizeof(int), f);
+  if(e <= 0)
+    return 2;
+
+  e = fclose(f);
+  if(e != 0)
+    return 3;
+
   return 0;
 }
-int carregar(Tarefa tarefas[], int total, int pos) {
-  printf("funcao de carregar tarefas\n");
+
+int carregar(Tarefa tarefas[], int total, int *pos) {
+  FILE *f = fopen("tarefas", "rb");
+  if(f == NULL)
+    return 1;
+
+  int e = fread(tarefas, total, sizeof(Tarefa), f);
+  if(e <= 0)
+    return 2;
+
+  e = fread(pos, 1, sizeof(int), f);
+  if(e <= 0)
+    return 2;
+
+  e = fclose(f);
+  if(e != 0)
+    return 3;
+
   return 0;
 }
 
